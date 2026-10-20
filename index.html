@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title id="page-title">Convite Especial</title>
+<title id="page-title">Convite Real Encantado</title>
+
+<!-- 🌟 META TAGS PARA WHATSAPP 🌟 -->
+<meta property="og:type" content="website" />
+<meta id="og-title" property="og:title" content="Convite Real de Aniversário 👑✨" />
+<meta id="og-desc" property="og:description" content="Você é nosso convidado de honra! Toque para abrir o convite mágico." />
+<meta property="og:image" content="https://festadamaite.phsublime.com.br/compartilhar.jpeg" />
+<meta property="og:image:type" content="image/jpeg" />
 
 <!-- Fontes Nobres -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,7 +131,7 @@ html, body {
 #convite-page { z-index: 10; display: none; opacity: 0; transition: opacity 0.8s ease; }
 #convite-page.show { display: block; opacity: 1; }
 
-/* 🌟 CAMADA DINÂMICA DE TEXTO PERSONALIZADO 🌟 */
+/* 🌟 PLACA REAL CENTRAL DINÂMICA (SUBSTITUI OS DADOS PARA QUALQUER CLIENTE) 🌟 */
 .overlay-dinamica {
   position: absolute;
   top: 27%; left: 16%;
@@ -132,7 +139,7 @@ html, body {
   background: #fdf5ea;
   border-radius: 25px;
   z-index: 15;
-  display: none;
+  display: flex; /* Sempre visível para adaptar o convite */
   flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
@@ -150,7 +157,7 @@ html, body {
   color: #9b6c28; letter-spacing: 2px; margin-top: 2px; margin-bottom: 10px;
 }
 .info-badge {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   border: 1px solid #e2c88d;
   border-radius: 20px;
   padding: 5px 12px; width: 94%;
@@ -282,7 +289,7 @@ html, body {
 
   <video id="video-abertura" class="video-player" playsinline webkit-playsinline x5-playsinline preload="auto" src="https://i.imgur.com/JPzoItH.mp4"></video>
 
-  <!-- Slideshow Dinâmico -->
+  <!-- Slideshow Dinâmico do Cliente -->
   <div id="slideshow-container">
     <div class="slideshow-bg"></div>
     <div class="slideshow-title" id="slide-title">1 Aninho de Puro Amor ✨</div>
@@ -298,16 +305,16 @@ html, body {
   <button id="btn-pular" type="button" onclick="irParaFinal()">Pular vídeo ✕</button>
   <canvas id="sparkle-canvas"></canvas>
 
-  <!-- Convite Principal -->
+  <!-- Fundo do Convite -->
   <img id="convite-page" src="./pagina.png?v=3" alt="Convite Principal">
 
-  <!-- CAMADA DINÂMICA DE SOBREPOSIÇÃO (QUANDO GERADO PELO CRIADOR) -->
+  <!-- 🌟 PLACA DE DADOS DO CLIENTE (SEMPRE ADAPTÁVEL) 🌟 -->
   <div class="overlay-dinamica" id="overlayDinamica">
-    <h1 id="dyn-nome">Maitê</h1>
+    <h1 id="dyn-nome">Princesa</h1>
     <div class="idade" id="dyn-idade">👑 1 ANINHO 👑</div>
-    <div class="info-badge" id="dyn-data">📅 14/11/2026</div>
-    <div class="info-badge" id="dyn-hora">⏰ 16:00 horas</div>
-    <div class="info-badge" id="dyn-local" style="font-size: 11px;">📍 Espaço Aquarela Festas</div>
+    <div class="info-badge" id="dyn-data">📅 Data Especial</div>
+    <div class="info-badge" id="dyn-hora">⏰ 18:00 horas</div>
+    <div class="info-badge" id="dyn-local" style="font-size: 11px;">📍 Salão Real de Festas</div>
   </div>
 
   <div class="btn-layer" id="btnLayerPrincipal">
@@ -333,10 +340,10 @@ html, body {
     <div class="modal-box" onclick="event.stopPropagation()">
       <h3 id="pix-title">🎁 Vale Presente</h3>
       <p>Caso prefira nos agraciar com um mimo via Pix:</p>
-      <div class="pix-chave-container" id="texto-chave-pix">14812948738</div>
+      <div class="pix-chave-container" id="texto-chave-pix">CHAVE-PIX-AQUI</div>
       <div class="pix-info-extra" id="pix-detalhes">
-        <strong>Favorecida:</strong> Tahayssa Avelino da Silva<br>
-        <strong>Instituição:</strong> PicPay
+        <strong>Favorecido:</strong> Nome do Titular<br>
+        <strong>Instituição:</strong> Banco
       </div>
       <button class="btn-copiar" type="button" onclick="copiarChavePix()">Copiar Chave Pix ✨</button>
       <button class="btn-fechar" type="button" onclick="fecharModalPix()">Fechar</button>
@@ -350,70 +357,45 @@ html, body {
 
 <script>
 // ==========================================
-// 🌟 LEITOR DE PARÂMETROS DINÂMICOS DA URL 🌟
+// 🌟 MOTOR UNIVERSAL: LÊ OS DADOS DO CLIENTE 🌟
 // ==========================================
 const params = new URLSearchParams(window.location.search);
-const ehCustomizado = params.has('n');
 
-// Dados Padrão (Maitê)
+// Esqueleto Neutro (Template)
 let config = {
-  nome: "Maitê",
-  idade: "1 aninho",
-  data: "14/11/2026",
-  hora: "16:00 horas",
-  local: "Espaço Aquarela Festas e Eventos",
-  maps: "https://www.google.com/maps/search/?api=1&query=Espa%C3%A7o+Aquarela+Festas+e+Eventos",
-  whatsapp: "5521981461040",
-  pix: "14812948738",
-  pix_nome: "Tahayssa Avelino da Silva",
-  pix_banco: "PicPay",
-  audio: "https://files.catbox.moe/txl3r7.mp3",
-  fotos: [
+  nome: params.get('n') || "Princesa",
+  idade: params.get('i') || "1 aninho",
+  data: params.get('d') || "Data da Festa",
+  hora: params.get('h') || "17:00 horas",
+  local: params.get('l') || "Salão de Festas",
+  maps: params.get('m') || "https://maps.google.com",
+  whatsapp: params.get('w') || "5521999999999",
+  pix: params.get('p') || "suachavepixaqui",
+  pix_nome: params.get('pn') || "Titular do Pix",
+  pix_banco: params.get('pb') || "Banco",
+  audio: params.get('audio') || "https://files.catbox.moe/txl3r7.mp3",
+  fotos: params.get('fotos') ? params.get('fotos').split(',') : [
     "https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg",
     "https://i.postimg.cc/7Lg6nYVL/Whats-App-Image-2026-10-16-at-20-04-50.jpg",
-    "https://i.postimg.cc/bYCmhQXW/Whats-App-Image-2026-10-20-at-x.jpg",
-    "https://i.postimg.cc/dtgn7wVH/Whats-App-Image-2026-10-20-at-10-06-09xx.jpg",
-    "https://i.postimg.cc/BvBCwFch/Whats-App-Image-2026-10-20-at-10-06-09x.jpg",
-    "https://i.postimg.cc/qqzXR5fP/Whats-App-Image-2026-10-20-at-10-06-09.jpg",
-    "https://i.postimg.cc/QxyHXzCf/Whats-App-Image-2026-10-20-at-20-04-50s.jpg"
+    "https://i.postimg.cc/bYCmhQXW/Whats-App-Image-2026-10-20-at-x.jpg"
   ]
 };
 
-// Se veio do criador, aplica as novidades!
-if (ehCustomizado) {
-  config.nome = params.get('n') || config.nome;
-  config.idade = params.get('i') || config.idade;
-  config.data = params.get('d') || config.data;
-  config.hora = params.get('h') || config.hora;
-  config.local = params.get('l') || config.local;
-  config.maps = params.get('m') || config.maps;
-  config.whatsapp = params.get('w') || config.whatsapp;
-  config.pix = params.get('p') || config.pix;
-  config.pix_nome = params.get('pn') || config.pix_nome;
-  config.pix_banco = params.get('pb') || config.pix_banco;
-  config.audio = params.get('audio') || config.audio;
-  if (params.get('fotos')) {
-    config.fotos = params.get('fotos').split(',');
-  }
+// 1. Aplica o Nome e Dados na Placa Real
+document.getElementById('page-title').innerText = "Convite Real - " + config.nome;
+document.getElementById('dyn-nome').innerText = config.nome;
+document.getElementById('dyn-idade').innerText = "👑 " + config.idade.toUpperCase() + " 👑";
+document.getElementById('dyn-data').innerText = "📅 " + config.data;
+document.getElementById('dyn-hora').innerText = "⏰ " + config.hora;
+document.getElementById('dyn-local').innerText = "📍 " + config.local;
+document.getElementById('slide-title').innerText = config.idade.toUpperCase() + " DE PURO AMOR ✨";
 
-  // Atualiza título da aba
-  document.getElementById('page-title').innerText = "Convite Especial - " + config.nome;
-  
-  // Exibe a moldura de dados na tela do convite
-  const overlay = document.getElementById('overlayDinamica');
-  document.getElementById('dyn-nome').innerText = config.nome;
-  document.getElementById('dyn-idade').innerText = "👑 " + config.idade.toUpperCase() + " 👑";
-  document.getElementById('dyn-data').innerText = "📅 " + config.data;
-  document.getElementById('dyn-hora').innerText = "⏰ " + config.hora;
-  document.getElementById('dyn-local').innerText = "📍 " + config.local;
-  
-  // Atualiza Pix
-  document.getElementById('pix-title').innerText = "🎁 Vale Presente - " + config.nome;
-  document.getElementById('texto-chave-pix').innerText = config.pix;
-  document.getElementById('pix-detalhes').innerHTML = "<strong>Favorecido:</strong> " + config.pix_nome + "<br><strong>Instituição:</strong> " + config.pix_banco;
-}
+// 2. Aplica o Pix
+document.getElementById('pix-title').innerText = "🎁 Vale Presente - " + config.nome;
+document.getElementById('texto-chave-pix').innerText = config.pix;
+document.getElementById('pix-detalhes').innerHTML = "<strong>Favorecido:</strong> " + config.pix_nome + "<br><strong>Instituição:</strong> " + config.pix_banco;
 
-// Constrói o Álbum de Fotos Dinamicamente
+// 3. Monta o Álbum de Fotos Dinâmico do Cliente
 const photoFrame = document.getElementById('photoFrame');
 const slideDotsContainer = document.getElementById('slideDots');
 config.fotos.forEach((link, idx) => {
@@ -456,7 +438,7 @@ let photoChangeTimeout = null;
 let smokeTimeout = null;
 let falaIniciada = false;
 
-// Configura o áudio escolhido
+// Configura o áudio
 audioNarracao.src = config.audio;
 audioNarracao.load();
 
@@ -473,7 +455,7 @@ function ajustarCanvas() {
 window.addEventListener('resize', ajustarCanvas);
 ajustarCanvas();
 
-// Funções de Interação
+// Funções dos Botões
 function abrirLocalizacao(e) {
   if (e) animarBrilho(e);
   window.open(config.maps, '_blank');
@@ -486,7 +468,7 @@ function confirmarPresencaWhatsapp(e) {
   const festa = String.fromCodePoint(0x1F389);
   const brilho = String.fromCodePoint(0x2728);
 
-  const mensagem = "Saudações Reais! " + castelo + coroa + " Atendendo à nobre convocação de Sua Alteza, a Princesa " + config.nome + ", confirmo com imensa honra e alegria a nossa presença no Grande Baile de seu " + config.idade + "! Nos vemos dia " + config.data + " às " + config.hora + " no " + config.local + "! " + festa + brilho;
+  const mensagem = "Saudações Reais! " + castelo + coroa + " Atendendo à nobre convocação de " + config.nome + ", confirmo com imensa honra e alegria a nossa presença no Grande Baile de " + config.idade + "! Nos vemos dia " + config.data + " às " + config.hora + " no " + config.local + "! " + festa + brilho;
 
   const url = "https://api.whatsapp.com/send?phone=" + config.whatsapp + "&text=" + encodeURIComponent(mensagem);
   window.open(url, '_blank');
@@ -502,8 +484,7 @@ function soltarBrilhoRastro(x, y) {
       vx: (Math.random() - 0.5) * 2,
       vy: (Math.random() - 0.5) * 2 + 0.5,
       radius: Math.random() * 3 + 1,
-      alpha: 1,
-      decay: Math.random() * 0.025 + 0.015,
+      alpha: 1, decay: 0.02,
       color: cores[Math.floor(Math.random() * cores.length)]
     });
   }
@@ -519,7 +500,7 @@ stage.addEventListener('touchmove', (e) => {
   }
 }, { passive: true });
 
-// Borboletas
+// Borboletas 3D
 let borboletasAtivas = true;
 let tVoo = 0;
 function ativarBorboletas(sim) {
@@ -644,7 +625,7 @@ function iniciarSlideshow() {
   ativarBorboletas(true);
 
   const fotosDinamicas = document.querySelectorAll('.slide-photo');
-  let tempoPorFoto = Math.max(2500, (16 / fotosDinamicas.length) * 1000);
+  let tempoPorFoto = Math.max(2400, (16 / fotosDinamicas.length) * 1000);
 
   slideInterval = setInterval(() => {
     photoSmoke.classList.add('ativo');
@@ -696,9 +677,11 @@ function finalizarSlideshowEIrParaFala() {
 function irParaFinal() {
   falaIniciada = true;
   if (slideInterval) clearInterval(slideInterval);
+  if (photoChangeTimeout) clearTimeout(photoChangeTimeout);
+  if (smokeTimeout) clearTimeout(smokeTimeout);
   if (audioNarracao) audioNarracao.pause();
+  
   btnPular.style.display = 'none';
-
   smokeOverlay.classList.add('animar');
 
   setTimeout(() => {
@@ -712,10 +695,8 @@ function irParaFinal() {
     convitePage.classList.add('show');
     btnLayerPrincipal.classList.add('show');
     
-    // Se for customizado pelo painel, exibe os dados novos do cliente
-    if (ehCustomizado) {
-      overlayDinamica.style.display = 'flex';
-    }
+    // Placa adaptada para qualquer cliente
+    overlayDinamica.style.display = 'flex';
 
     ativarBorboletas(true);
     setTimeout(() => { smokeOverlay.classList.remove('animar'); }, 450);
@@ -724,7 +705,7 @@ function irParaFinal() {
 
 function abrirPaginaPresentes() {
   convitePage.classList.remove('show');
-  if (ehCustomizado) overlayDinamica.style.display = 'none';
+  overlayDinamica.style.display = 'none';
   btnLayerPrincipal.classList.remove('show');
   presentesPage.classList.add('show');
   btnLayerPresentes.classList.add('show');
@@ -735,7 +716,7 @@ function voltarAoConvite() {
   presentesPage.classList.remove('show');
   btnLayerPresentes.classList.remove('show');
   convitePage.classList.add('show');
-  if (ehCustomizado) overlayDinamica.style.display = 'flex';
+  overlayDinamica.style.display = 'flex';
   btnLayerPrincipal.classList.add('show');
   ativarBorboletas(true);
 }
