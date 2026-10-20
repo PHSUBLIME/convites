@@ -17,6 +17,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 
+<!-- Pré-carregamento das Fotos e Presentes -->
+<link rel="preload" as="image" href="./pagina.png?v=3">
+<link rel="preload" as="image" href="https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/7Lg6nYVL/Whats-App-Image-2026-10-16-at-20-04-50.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/bYCmhQXW/Whats-App-Image-2026-10-20-at-x.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/dtgn7wVH/Whats-App-Image-2026-10-20-at-10-06-09xx.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/BvBCwFch/Whats-App-Image-2026-10-20-at-10-06-09x.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/qqzXR5fP/Whats-App-Image-2026-10-20-at-10-06-09.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/QxyHXzCf/Whats-App-Image-2026-10-20-at-20-04-50s.jpg">
+<link rel="preload" as="image" href="https://i.postimg.cc/zX3NpXj6/presentes.png">
+
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
@@ -42,6 +53,33 @@ html, body {
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* 🌟 BOTÃO PARA QUALQUER PESSOA CRIAR UM CONVITE 🌟 */
+.btn-criar-topo {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 95;
+  background: rgba(13, 2, 6, 0.75);
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn-criar-topo:hover {
+  background: #ffd700;
+  color: #000;
 }
 
 #cover { z-index: 50; cursor: pointer; transition: opacity 0.5s ease; }
@@ -131,7 +169,7 @@ html, body {
 #convite-page { z-index: 10; display: none; opacity: 0; transition: opacity 0.8s ease; }
 #convite-page.show { display: block; opacity: 1; }
 
-/* 🌟 PLACA REAL CENTRAL DINÂMICA (SUBSTITUI OS DADOS PARA QUALQUER CLIENTE) 🌟 */
+/* 🌟 PLACA DE DADOS DO CLIENTE (CORRIGIDO: SÓ APARECE NO FINAL!) 🌟 */
 .overlay-dinamica {
   position: absolute;
   top: 27%; left: 16%;
@@ -139,7 +177,7 @@ html, body {
   background: #fdf5ea;
   border-radius: 25px;
   z-index: 15;
-  display: flex; /* Sempre visível para adaptar o convite */
+  display: none; /* Inicia oculto para NÃO cobrir a capa! */
   flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
@@ -271,6 +309,10 @@ html, body {
 <body>
 
 <div class="stage" id="stage">
+  
+  <!-- 🌟 BOTÃO PARA QUEM QUISER CRIAR O SEU CONVITE 🌟 -->
+  <a href="criar.html" class="btn-criar-topo">✨ Criar Meu Convite</a>
+
   <img id="cover" src="./capa.png" alt="Capa" onclick="iniciarExperiencia()">
   <div class="tap-hint" onclick="iniciarExperiencia()">✨ TOQUE PARA ABRIR ✨</div>
 
@@ -308,7 +350,7 @@ html, body {
   <!-- Fundo do Convite -->
   <img id="convite-page" src="./pagina.png?v=3" alt="Convite Principal">
 
-  <!-- 🌟 PLACA DE DADOS DO CLIENTE (SEMPRE ADAPTÁVEL) 🌟 -->
+  <!-- 🌟 PLACA DE DADOS DO CLIENTE (SÓ APARECE NO FINAL!) 🌟 -->
   <div class="overlay-dinamica" id="overlayDinamica">
     <h1 id="dyn-nome">Princesa</h1>
     <div class="idade" id="dyn-idade">👑 1 ANINHO 👑</div>
@@ -357,22 +399,23 @@ html, body {
 
 <script>
 // ==========================================
-// 🌟 MOTOR UNIVERSAL: LÊ OS DADOS DO CLIENTE 🌟
+// 🌟 MOTOR UNIVERSAL: LÊ OS DADOS DO LINK 🌟
 // ==========================================
 const params = new URLSearchParams(window.location.search);
+const ehCustomizado = params.has('n'); // Verifica se veio do gerador
 
-// Esqueleto Neutro (Template)
+// Configurações
 let config = {
-  nome: params.get('n') || "Princesa",
+  nome: params.get('n') || "Maitê",
   idade: params.get('i') || "1 aninho",
-  data: params.get('d') || "Data da Festa",
-  hora: params.get('h') || "17:00 horas",
-  local: params.get('l') || "Salão de Festas",
-  maps: params.get('m') || "https://maps.google.com",
-  whatsapp: params.get('w') || "5521999999999",
-  pix: params.get('p') || "suachavepixaqui",
-  pix_nome: params.get('pn') || "Titular do Pix",
-  pix_banco: params.get('pb') || "Banco",
+  data: params.get('d') || "14/11/2026",
+  hora: params.get('h') || "16:00 horas",
+  local: params.get('l') || "Espaço Aquarela Festas e Eventos",
+  maps: params.get('m') || "https://www.google.com/maps/search/?api=1&query=Espa%C3%A7o+Aquarela+Festas+e+Eventos",
+  whatsapp: params.get('w') || "5521981461040",
+  pix: params.get('p') || "14812948738",
+  pix_nome: params.get('pn') || "Tahayssa Avelino da Silva",
+  pix_banco: params.get('pb') || "PicPay",
   audio: params.get('audio') || "https://files.catbox.moe/txl3r7.mp3",
   fotos: params.get('fotos') ? params.get('fotos').split(',') : [
     "https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg",
@@ -381,7 +424,7 @@ let config = {
   ]
 };
 
-// 1. Aplica o Nome e Dados na Placa Real
+// 1. Aplica o Nome e Dados
 document.getElementById('page-title').innerText = "Convite Real - " + config.nome;
 document.getElementById('dyn-nome').innerText = config.nome;
 document.getElementById('dyn-idade').innerText = "👑 " + config.idade.toUpperCase() + " 👑";
@@ -439,8 +482,10 @@ let smokeTimeout = null;
 let falaIniciada = false;
 
 // Configura o áudio
-audioNarracao.src = config.audio;
-audioNarracao.load();
+if (config.audio && config.audio !== 'instrumental') {
+  audioNarracao.src = config.audio;
+  audioNarracao.load();
+}
 
 // Canvas Partículas
 const canvas = document.getElementById('sparkle-canvas');
@@ -652,6 +697,7 @@ function mostrarSlide(index) {
   dots.forEach((dot, i) => { dot.classList.toggle('ativo', i === index); });
 }
 
+// 🌟 TRANSIÇÃO INTELIGENTE: Pula o vídeo da Maitê se for convite customizado! 🌟
 function finalizarSlideshowEIrParaFala() {
   if (falaIniciada) return;
   falaIniciada = true;
@@ -663,8 +709,14 @@ function finalizarSlideshowEIrParaFala() {
   slideshowContainer.classList.remove('visivel');
   ativarBorboletas(false);
 
-  if (musica) musica.volume = 0.22;
+  // SE FOR OUTRA CRIANÇA: Pula o vídeo da Maitê e vai direto para o convite com fumaça!
+  if (ehCustomizado) {
+    irParaFinal();
+    return;
+  }
 
+  // Se for o convite original da Maitê, toca a fala dela normalmente
+  if (musica) musica.volume = 0.22;
   videoFala.currentTime = 0;
   videoFala.muted = false;
   videoFala.classList.add('visivel');
@@ -695,8 +747,10 @@ function irParaFinal() {
     convitePage.classList.add('show');
     btnLayerPrincipal.classList.add('show');
     
-    // Placa adaptada para qualquer cliente
-    overlayDinamica.style.display = 'flex';
+    // 🌟 SÓ EXIBE A PLACA SE FOR UM CONVITE PERSONALIZADO 🌟
+    if (ehCustomizado) {
+      overlayDinamica.style.display = 'flex';
+    }
 
     ativarBorboletas(true);
     setTimeout(() => { smokeOverlay.classList.remove('animar'); }, 450);
@@ -705,7 +759,7 @@ function irParaFinal() {
 
 function abrirPaginaPresentes() {
   convitePage.classList.remove('show');
-  overlayDinamica.style.display = 'none';
+  if (ehCustomizado) overlayDinamica.style.display = 'none';
   btnLayerPrincipal.classList.remove('show');
   presentesPage.classList.add('show');
   btnLayerPresentes.classList.add('show');
@@ -716,7 +770,7 @@ function voltarAoConvite() {
   presentesPage.classList.remove('show');
   btnLayerPresentes.classList.remove('show');
   convitePage.classList.add('show');
-  overlayDinamica.style.display = 'flex';
+  if (ehCustomizado) overlayDinamica.style.display = 'flex';
   btnLayerPrincipal.classList.add('show');
   ativarBorboletas(true);
 }
@@ -725,7 +779,7 @@ function abrirModalPix() { modalPix.style.display = 'flex'; }
 function fecharModalPix() { modalPix.style.display = 'none'; }
 function copiarChavePix() {
   navigator.clipboard.writeText(config.pix).then(() => {
-    alert("✨ Chave Pix copiada com sucesso!\n\nFavorecido: " + config.pix_nome + "\nInstituição: " + config.pix_banco);
+    alert("✨ Chave Pix copiada com sucesso!\n\nFavorecida: " + config.pix_nome + "\nInstituição: " + config.pix_banco);
     fecharModalPix();
   }).catch(() => { prompt("Copie a chave Pix:", config.pix); });
 }
