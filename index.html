@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Criador de Convites Mágicos - RealizaFest</title>
+
+<!-- Fontes Nobres -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0d0608;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px 12px;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: #19050d;
+  border: 1.5px solid #d4af37;
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  color: #f7d58b;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  line-height: 1.1;
+}
+.header p {
+  font-size: 13px;
+  color: #d1b5c2;
+  margin-top: 4px;
+}
+
+/* Seções do Formulário */
+.form-section {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: #ffd700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 6px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+.form-group:last-child {
+  margin-bottom: 0;
+}
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #e6ccd6;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+input, select, textarea {
+  width: 100%;
+  background: #0d0206;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+.row {
+  display: flex;
+  gap: 10px;
+}
+.row .form-group {
+  flex: 1;
+}
+
+/* Botão Gerar */
+.btn-gerar {
+  width: 100%;
+  background: linear-gradient(135deg, #8a1329 0%, #ba2d48 100%);
+  color: #fff;
+  border: 2px solid #ffd700;
+  border-radius: 30px;
+  padding: 16px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(138, 19, 41, 0.5), 0 0 15px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+.btn-gerar:active {
+  transform: scale(0.98);
+}
+
+/* Modal do Resultado com o Link */
+#modal-sucesso {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-content {
+  background: #1f0611;
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
+}
+.modal-content h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: #ffd700;
+  margin-bottom: 8px;
+}
+.modal-content p {
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 16px;
+}
+.link-box {
+  background: #0d0206;
+  border: 1px dashed #d4af37;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  word-break: break-all;
+  color: #f7d58b;
+  margin-bottom: 16px;
+  user-select: all;
+}
+.btn-modal {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 8px;
+  text-decoration: none;
+  border: none;
+}
+.btn-copiar {
+  background: #25d366;
+  color: #fff;
+}
+.btn-ver {
+  background: #d4af37;
+  color: #000;
+}
+.btn-fechar {
+  background: transparent;
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Criador de Convites</h1>
+    <p>Gere uma experiência cinematográfica em 1 clique ✨</p>
+  </div>
+
+  <form id="inviteForm" onsubmit="gerarConvite(event)">
+    
+    <!-- 1. Dados da Aniversariante -->
+    <div class="form-section">
+      <div class="section-title">👑 Dados da Criança</div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label>Nome da Criança</label>
+          <input type="text" id="nome" placeholder="Ex: Maitê" required>
+        </div>
+        <div class="form-group">
+          <label>Idade a comemorar</label>
+          <input type="text" id="idade" placeholder="Ex: 1 aninho" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Data, Hora e Local -->
+    <div class="form-section">
+      <div class="section-title">📅 Data e Local da Festa</div>
+      
+      <div class="row">
+        <div class="form-group">
+          <label>Data</label>
+          <input type="text" id="data" placeholder="Ex: 14/11/2026" required>
+        </div>
+        <div class="form-group">
+          <label>Horário</label>
+          <input type="text" id="hora" placeholder="Ex: 16:00 horas" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nome do Local / Salão</label>
+        <input type="text" id="local" placeholder="Ex: Espaço Aquarela Festas" required>
+      </div>
+
+      <div class="form-group">
+        <label>Link do Google Maps do Salão</label>
+        <input type="url" id="maps" placeholder="https://maps.google.com/..." required>
+      </div>
+    </div>
+
+    <!-- 3. Confirmação de Presença -->
+    <div class="form-section">
+      <div class="section-title">📱 WhatsApp de Confirmação</div>
+      
+      <div class="form-group">
+        <label>Número do WhatsApp (com DDD)</label>
+        <input type="tel" id="whatsapp" placeholder="Ex: 21981461040" required>
+      </div>
+    </div>
+
+    <!-- 4. Chave Pix para Presentes -->
+    <div class="form-section">
+      <div class="section-title">🎁 Vale Presente (Pix)</div>
+      
+      <div class="form-group">
+        <label>Sua Chave Pix</label>
+        <input type="text" id="pix" placeholder="CPF, celular, e-mail ou aleatória" required>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Nome do Titular do Pix</label>
+          <input type="text" id="pix_nome" placeholder="Ex: Tahayssa Avelino" required>
+        </div>
+        <div class="form-group">
+          <label>Banco / Instituição</label>
+          <input type="text" id="pix_banco" placeholder="Ex: PicPay" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Fotos da Retrospectiva -->
+    <div class="form-section">
+      <div class="section-title">📸 Links das Fotos (Álbum)</div>
+      <p style="font-size: 11px; color: #bbb; margin-bottom: 8px;">Cole os links das fotos (do PostImages ou Imgur):</p>
+      
+      <div class="form-group">
+        <input type="url" class="foto-input" placeholder="Foto 1 (Princesa/Destaque)" required>
+      </div>
+      <div class="form-group">
+        <input type="url" class="foto-input" placeholder="Foto 2" required>
+      </div>
+      <div class="form-group">
+        <input type="url" class="foto-input" placeholder="Foto 3" required>
+      </div>
+      <div class="form-group">
+        <input type="url" class="foto-input" placeholder="Foto 4">
+      </div>
+      <div class="form-group">
+        <input type="url" class="foto-input" placeholder="Foto 5">
+      </div>
+    </div>
+
+    <!-- 6. Narração -->
+    <div class="form-section">
+      <div class="section-title">🎙️ Narração da História</div>
+      
+      <div class="form-group">
+        <label>Estilo de Narração</label>
+        <select id="narracao">
+          <option value="https://files.catbox.moe/txl3r7.mp3">Convocação Medieval Clássica (Arauto Real) 👑</option>
+          <option value="instrumental">Apenas Música Instrumental Encantada 🎵</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-gerar">✨ GERAR CONVITE MÁGICO ✨</button>
+  </form>
+</div>
+
+<!-- Modal com o Link Criado -->
+<div id="modal-sucesso">
+  <div class="modal-content">
+    <h2>Parabéns! 👑</h2>
+    <p>O seu convite mágico foi gerado com sucesso e já está pronto para compartilhar!</p>
+    
+    <div class="link-box" id="linkGerado"></div>
+    
+    <button class="btn-modal btn-copiar" onclick="copiarLink()">Copiar Link do Convite 📋</button>
+    <a id="btnVerConvite" class="btn-modal btn-ver" target="_blank">Abrir e Testar Convite 👁️</a>
+    <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+  </div>
+</div>
+
+<script>
+function gerarConvite(e) {
+  e.preventDefault();
+
+  // Coleta os dados
+  const nome = document.getElementById('nome').value.trim();
+  const idade = document.getElementById('idade').value.trim();
+  const data = document.getElementById('data').value.trim();
+  const hora = document.getElementById('hora').value.trim();
+  const local = document.getElementById('local').value.trim();
+  const maps = document.getElementById('maps').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+  const pix = document.getElementById('pix').value.trim();
+  const pix_nome = document.getElementById('pix_nome').value.trim();
+  const pix_banco = document.getElementById('pix_banco').value.trim();
+  const narracao = document.getElementById('narracao').value;
+
+  // Coleta as fotos
+  const fotoInputs = document.querySelectorAll('.foto-input');
+  const fotos = [];
+  fotoInputs.forEach(input => {
+    if (input.value.trim() !== '') {
+      fotos.push(input.value.trim());
+    }
+  });
+
+  // Monta os parâmetros
+  const params = new URLSearchParams();
+  params.set('n', nome);
+  params.set('i', idade);
+  params.set('d', data);
+  params.set('h', hora);
+  params.set('l', local);
+  params.set('m', maps);
+  params.set('w', whatsapp);
+  params.set('p', pix);
+  params.set('pn', pix_nome);
+  params.set('pb', pix_banco);
+  params.set('audio', narracao);
+  params.set('fotos', fotos.join(','));
+
+  // Cria o link final apontando para o seu index.html
+  const urlFinal = window.location.origin + window.location.pathname.replace('criar.html', '') + '?' + params.toString();
+
+  document.getElementById('linkGerado').innerText = urlFinal;
+  document.getElementById('btnVerConvite').href = urlFinal;
+  document.getElementById('modal-sucesso').style.display = 'flex';
+}
+
+function copiarLink() {
+  const link = document.getElementById('linkGerado').innerText;
+  navigator.clipboard.writeText(link).then(() => {
+    alert("✨ Link copiado com sucesso! Agora é só colar no WhatsApp!");
+  }).catch(() => {
+    prompt("Copie o link abaixo:", link);
+  });
+}
+
+function fecharModal() {
+  document.getElementById('modal-sucesso').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
