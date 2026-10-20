@@ -3,39 +3,213 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title id="page-title">Convite Real Encantado</title>
-
-<!-- 🌟 META TAGS PARA WHATSAPP 🌟 -->
-<meta property="og:type" content="website" />
-<meta id="og-title" property="og:title" content="Convite Real de Aniversário 👑✨" />
-<meta id="og-desc" property="og:description" content="Você é nosso convidado de honra! Toque para abrir o convite mágico." />
-<meta property="og:image" content="https://festadamaite.phsublime.com.br/compartilhar.jpeg" />
-<meta property="og:image:type" content="image/jpeg" />
+<title id="dyn-title">Criador de Convites Mágicos</title>
 
 <!-- Fontes Nobres -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-
-<!-- Pré-carregamento das Fotos e Presentes -->
-<link rel="preload" as="image" href="./pagina.png?v=3">
-<link rel="preload" as="image" href="https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/7Lg6nYVL/Whats-App-Image-2026-10-16-at-20-04-50.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/bYCmhQXW/Whats-App-Image-2026-10-20-at-x.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/dtgn7wVH/Whats-App-Image-2026-10-20-at-10-06-09xx.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/BvBCwFch/Whats-App-Image-2026-10-20-at-10-06-09x.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/qqzXR5fP/Whats-App-Image-2026-10-20-at-10-06-09.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/QxyHXzCf/Whats-App-Image-2026-10-20-at-20-04-50s.jpg">
-<link rel="preload" as="image" href="https://i.postimg.cc/zX3NpXj6/presentes.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 100%; height: 100%;
   background: #0d0608;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+/* ========================================================
+   1. TELA DO CRIADOR / FORMULÁRIO (QUANDO NÃO TEM CONVITE)
+   ======================================================== */
+#tela-criador {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px 14px;
+  background: radial-gradient(circle at center, #240714 0%, #0d0206 100%);
+  overflow-y: auto;
+}
+.criador-box {
+  width: 100%;
+  max-width: 460px;
+  background: #18040d;
+  border: 1.5px solid #d4af37;
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.25);
+}
+.criador-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.criador-header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  color: #f7d58b;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  line-height: 1.1;
+}
+.criador-header p {
+  font-size: 13px;
+  color: #d1b5c2;
+  margin-top: 4px;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.form-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: #ffd700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 6px;
+}
+.form-group { margin-bottom: 12px; }
+.form-group:last-child { margin-bottom: 0; }
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #e6ccd6;
+  margin-bottom: 5px;
+}
+input, select {
+  width: 100%;
+  background: #090104;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+input:focus, select:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+.row { display: flex; gap: 10px; }
+.row .form-group { flex: 1; }
+
+.btn-file-wrapper {
+  position: relative;
   overflow: hidden;
-  font-family: system-ui, -apple-system, sans-serif;
-  display: flex; align-items: center; justify-content: center;
+  display: block;
+  width: 100%;
+}
+.btn-file-label {
+  border: 1.5px dashed #ffd700;
+  color: #ffd700;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-file-wrapper input[type=file] {
+  position: absolute;
+  left: 0; top: 0;
+  opacity: 0;
+  font-size: 100px;
+  cursor: pointer;
+}
+.thumbs-box {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.thumb-img {
+  width: 60px; height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1.5px solid #d4af37;
+}
+
+.btn-gerar-principal {
+  width: 100%;
+  background: linear-gradient(135deg, #8a1329 0%, #ba2d48 100%);
+  color: #fff;
+  border: 2px solid #ffd700;
+  border-radius: 30px;
+  padding: 16px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(138, 19, 41, 0.5);
+  margin-top: 10px;
+}
+.btn-gerar-principal:disabled { opacity: 0.6; cursor: wait; }
+
+/* Modal do Link Gerado */
+#modal-gerado {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-gerado-content {
+  background: #1c0510;
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+.modal-gerado-content h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  color: #ffd700;
+}
+.box-link-final {
+  background: #090104;
+  border: 1px dashed #d4af37;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  word-break: break-all;
+  color: #f7d58b;
+  margin: 14px 0;
+  user-select: all;
+}
+.btn-modal-link {
+  display: block; width: 100%;
+  padding: 13px; border-radius: 25px;
+  font-weight: 700; font-size: 13px;
+  text-transform: uppercase; cursor: pointer;
+  margin-bottom: 8px; text-decoration: none; border: none;
+}
+.btn-copiar-wpp { background: #25d366; color: #fff; }
+.btn-abrir-convite { background: #d4af37; color: #000; }
+.btn-fechar-criador { background: transparent; color: #888; border: none; cursor: pointer; font-size: 12px; }
+
+/* ========================================================
+   2. TELA DO CONVITE MÁGICO (QUANDO O LINK É ABERTO)
+   ======================================================== */
+#tela-convite {
+  display: none;
+  width: 100%; height: 100%;
+  align-items: center; justify-content: center;
 }
 .stage {
   position: relative;
@@ -52,42 +226,13 @@ html, body {
   width: 100%; height: 100%;
   object-fit: cover;
   user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* 🌟 BOTÃO PARA QUALQUER PESSOA CRIAR UM CONVITE 🌟 */
-.btn-criar-topo {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 95;
-  background: rgba(13, 2, 6, 0.75);
-  border: 1px solid #ffd700;
-  color: #ffd700;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 20px;
-  text-decoration: none;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.btn-criar-topo:hover {
-  background: #ffd700;
-  color: #000;
 }
 
 #cover { z-index: 50; cursor: pointer; transition: opacity 0.5s ease; }
 .opened #cover { opacity: 0; pointer-events: none; }
 
 .video-player {
-  z-index: 40;
-  opacity: 0;
+  z-index: 40; opacity: 0;
   pointer-events: none;
   transition: opacity 0.7s ease-in-out;
 }
@@ -96,67 +241,53 @@ html, body {
 #btn-pular {
   position: absolute; right: 14px; bottom: 24px;
   z-index: 80; display: none;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.75); color: #fff;
   border: 1px solid rgba(212, 175, 55, 0.8);
-  border-radius: 20px;
-  padding: 8px 16px; font-size: 13px; font-weight: bold; cursor: pointer;
+  border-radius: 20px; padding: 8px 16px;
+  font-size: 13px; font-weight: bold; cursor: pointer;
 }
 
 /* Slideshow */
 #slideshow-container {
   position: absolute; inset: 0;
-  z-index: 42;
-  display: none; opacity: 0;
+  z-index: 42; display: none; opacity: 0;
   transition: opacity 1s ease;
   overflow: hidden;
   flex-direction: column; align-items: center; justify-content: center;
 }
 #slideshow-container.visivel { display: flex; opacity: 1; }
-
 .slideshow-bg {
   position: absolute; inset: -15px;
-  background: url('./pagina.png?v=3') center/cover no-repeat;
-  filter: blur(5px) brightness(0.55);
+  background: url('https://i.postimg.cc/zX3NpXj6/presentes.png') center/cover no-repeat;
+  filter: blur(5px) brightness(0.5);
   transform: scale(1.06);
   z-index: 1;
 }
 .slideshow-title {
   font-family: 'Great Vibes', cursive;
-  color: #f7d58b;
-  font-size: clamp(28px, 7vw, 36px);
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.75), 0 2px 6px rgba(0, 0, 0, 0.9);
-  margin-bottom: 14px;
-  z-index: 3; text-align: center; padding: 0 15px;
+  color: #f7d58b; font-size: clamp(28px, 7vw, 36px);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.75);
+  margin-bottom: 14px; z-index: 3; text-align: center; padding: 0 15px;
 }
 .photo-frame {
-  position: relative;
-  width: 82%; height: 64%;
-  border-radius: 24px;
-  border: 3.5px solid #d4af37;
+  position: relative; width: 82%; height: 64%;
+  border-radius: 24px; border: 3.5px solid #d4af37;
   box-shadow: 0 0 35px rgba(212, 175, 55, 0.6), 0 15px 40px rgba(0, 0, 0, 0.95);
-  overflow: hidden;
-  background: #140308;
-  z-index: 3;
+  overflow: hidden; background: #140308; z-index: 3;
 }
 .slide-photo {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0; transform: scale(1.02);
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transform: scale(1.02);
   transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .slide-photo.ativo { opacity: 1; transform: scale(1.12); }
-
 .photo-smoke-pulse {
   position: absolute; inset: -15%;
   background: radial-gradient(circle, rgba(255, 248, 230, 0.88) 0%, rgba(255, 195, 215, 0.65) 45%, transparent 75%);
-  filter: blur(22px);
-  opacity: 0; pointer-events: none;
-  z-index: 5; transition: opacity 0.6s ease-in-out;
+  filter: blur(22px); opacity: 0; pointer-events: none; z-index: 5;
+  transition: opacity 0.6s ease-in-out;
 }
 .photo-smoke-pulse.ativo { opacity: 1; }
-
 .slide-dots { display: flex; gap: 7px; margin-top: 14px; z-index: 3; }
 .dot {
   width: 7px; height: 7px; border-radius: 50%;
@@ -169,25 +300,16 @@ html, body {
 #convite-page { z-index: 10; display: none; opacity: 0; transition: opacity 0.8s ease; }
 #convite-page.show { display: block; opacity: 1; }
 
-/* 🌟 PLACA DE DADOS DO CLIENTE (CORRIGIDO: SÓ APARECE NO FINAL!) 🌟 */
+/* Placa Real Central */
 .overlay-dinamica {
-  position: absolute;
-  top: 27%; left: 16%;
-  width: 68%; height: 43%;
-  background: #fdf5ea;
-  border-radius: 25px;
-  z-index: 15;
-  display: none; /* Inicia oculto para NÃO cobrir a capa! */
-  flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.35);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  padding: 8px 12px;
+  position: absolute; top: 27%; left: 16%; width: 68%; height: 43%;
+  background: #fdf5ea; border-radius: 25px; z-index: 15;
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.35);
+  border: 1px solid rgba(212, 175, 55, 0.4); padding: 8px 12px;
 }
 .overlay-dinamica h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(34px, 8vw, 44px);
+  font-family: 'Great Vibes', cursive; font-size: clamp(34px, 8vw, 44px);
   color: #7b1328; margin: 0; line-height: 1;
 }
 .overlay-dinamica .idade {
@@ -195,19 +317,14 @@ html, body {
   color: #9b6c28; letter-spacing: 2px; margin-top: 2px; margin-bottom: 10px;
 }
 .info-badge {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid #e2c88d;
-  border-radius: 20px;
-  padding: 5px 12px; width: 94%;
-  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.88); border: 1px solid #e2c88d;
+  border-radius: 20px; padding: 5px 12px; width: 94%; margin-bottom: 5px;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11.5px; font-weight: 700; color: #6a1727;
+  font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 700; color: #6a1727;
 }
 
 #smoke-overlay {
-  position: absolute; inset: -10%;
-  z-index: 44; pointer-events: none; opacity: 0;
+  position: absolute; inset: -10%; z-index: 44; pointer-events: none; opacity: 0;
   background: radial-gradient(circle, rgba(255, 248, 220, 0.95) 0%, rgba(255, 192, 203, 0.75) 45%, rgba(138, 30, 50, 0.4) 75%, transparent 100%);
   filter: blur(25px); transform: scale(0.7);
   transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -218,9 +335,7 @@ html, body {
 #butterflies-group { position: absolute; inset: 0; pointer-events: none; z-index: 75; }
 .magic-butterfly {
   position: absolute; top: 0; left: 0; pointer-events: none;
-  transform-origin: center center;
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.9));
-  display: block; will-change: transform;
 }
 .butterfly-body { width: 100%; height: 100%; position: relative; perspective: 600px; }
 .butterfly-torso {
@@ -233,11 +348,9 @@ html, body {
 }
 .wing.left { left: 0; border-radius: 80% 30% 70% 20%; animation: flapLeft 0.25s infinite alternate ease-in-out; }
 .wing.right { left: 52%; border-radius: 30% 80% 20% 70%; transform-origin: left center; animation: flapRight 0.25s infinite alternate ease-in-out; }
-
 #b1 .wing { background: radial-gradient(circle at 75% 25%, #fff9e6 0%, #ff9ebb 50%, #8a1329 100%); }
 #b2 .wing { background: radial-gradient(circle at 75% 25%, #ffffff 0%, #ffe082 50%, #b37400 100%); }
 #b3 .wing { background: radial-gradient(circle at 75% 25%, #fff5f8 0%, #f48fb1 50%, #6a0b22 100%); }
-
 @keyframes flapLeft { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(70deg); } }
 @keyframes flapRight { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(-70deg); } }
 
@@ -245,15 +358,12 @@ html, body {
 #presentes-page.show { display: block; opacity: 1; }
 
 .tap-hint {
-  position: absolute; top: 61.5%; left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute; top: 61.5%; left: 50%; transform: translate(-50%, -50%);
   z-index: 60; color: #fff;
   background: linear-gradient(135deg, rgba(138, 30, 50, 0.95) 0%, rgba(186, 45, 72, 0.95) 100%);
-  border: 1.5px solid #ffd700;
-  padding: 10px 24px; border-radius: 30px;
-  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
-  pointer-events: none;
+  border: 1.5px solid #ffd700; padding: 10px 24px; border-radius: 30px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  white-space: nowrap; pointer-events: none;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.4);
   animation: pulse 1.8s infinite ease-in-out;
 }
@@ -274,19 +384,19 @@ html, body {
 #btn-higiene     { left: 19%; top: 63%; width: 19%; height: 16%; border-radius: 50%; }
 #btn-educativos  { left: 40.5%; top: 63%; width: 19%; height: 16%; border-radius: 50%; }
 #btn-valepix     { left: 62%; top: 63%; width: 19%; height: 16%; border-radius: 50%; }
-
 #btn-voltar { left: 33%; top: 83.5%; width: 34%; height: 7%; border-radius: 25px; }
+
 #sparkle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 70; pointer-events: none; }
 
 /* Modal Pix */
 #modal-pix {
-  position: absolute; inset: 0; background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(5px); z-index: 100;
-  display: none; align-items: center; justify-content: center; padding: 20px;
+  position: absolute; inset: 0; background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px); z-index: 100; display: none;
+  align-items: center; justify-content: center; padding: 20px;
 }
 .modal-box {
   background: #fff8f0; border: 2px solid #d4af37; border-radius: 20px;
-  padding: 24px 20px; text-align: center; width: 90%; max-width: 340px;
+  padding: 24px 20px; text-align: center; width: 90%; max-width: 340px; color: #333;
 }
 .modal-box h3 { color: #8a1e32; font-size: 19px; margin-bottom: 8px; }
 .modal-box p { color: #555; font-size: 13px; margin-bottom: 12px; }
@@ -308,90 +418,204 @@ html, body {
 </head>
 <body>
 
-<div class="stage" id="stage">
-  
-  <!-- 🌟 BOTÃO PARA QUEM QUISER CRIAR O SEU CONVITE 🌟 -->
-  <a href="criar.html" class="btn-criar-topo">✨ Criar Meu Convite</a>
-
-  <img id="cover" src="./capa.png" alt="Capa" onclick="iniciarExperiencia()">
-  <div class="tap-hint" onclick="iniciarExperiencia()">✨ TOQUE PARA ABRIR ✨</div>
-
-  <!-- Borboletas -->
-  <div id="butterflies-group">
-    <div id="b1" class="magic-butterfly" style="width: 50px; height: 50px;">
-      <div class="butterfly-body"><div class="wing left"></div><div class="butterfly-torso"></div><div class="wing right"></div></div>
+<!-- ========================================================
+     1. PAINEL DO CRIADOR (ABRE SE NÃO HOUVER PARÂMETROS)
+     ======================================================== -->
+<div id="tela-criador">
+  <div class="criador-box">
+    <div class="criador-header">
+      <h1>Criador Real</h1>
+      <p>Crie um convite cinematográfico em 1 minuto ✨</p>
     </div>
-    <div id="b2" class="magic-butterfly" style="width: 42px; height: 42px;">
-      <div class="butterfly-body"><div class="wing left" style="animation-duration: 0.23s;"></div><div class="butterfly-torso"></div><div class="wing right" style="animation-duration: 0.23s;"></div></div>
-    </div>
-    <div id="b3" class="magic-butterfly" style="width: 36px; height: 36px;">
-      <div class="butterfly-body"><div class="wing left" style="animation-duration: 0.28s;"></div><div class="butterfly-torso"></div><div class="wing right" style="animation-duration: 0.28s;"></div></div>
-    </div>
-  </div>
 
-  <video id="video-abertura" class="video-player" playsinline webkit-playsinline x5-playsinline preload="auto" src="https://i.imgur.com/JPzoItH.mp4"></video>
-
-  <!-- Slideshow Dinâmico do Cliente -->
-  <div id="slideshow-container">
-    <div class="slideshow-bg"></div>
-    <div class="slideshow-title" id="slide-title">1 Aninho de Puro Amor ✨</div>
-    <div class="photo-frame" id="photoFrame">
-      <div class="photo-smoke-pulse" id="photoSmoke"></div>
-    </div>
-    <div class="slide-dots" id="slideDots"></div>
-  </div>
-
-  <video id="video-fala" class="video-player" playsinline webkit-playsinline x5-playsinline preload="auto" src="https://i.imgur.com/3W1InHI.mp4"></video>
-  <div id="smoke-overlay"></div>
-
-  <button id="btn-pular" type="button" onclick="irParaFinal()">Pular vídeo ✕</button>
-  <canvas id="sparkle-canvas"></canvas>
-
-  <!-- Fundo do Convite -->
-  <img id="convite-page" src="./pagina.png?v=3" alt="Convite Principal">
-
-  <!-- 🌟 PLACA DE DADOS DO CLIENTE (SÓ APARECE NO FINAL!) 🌟 -->
-  <div class="overlay-dinamica" id="overlayDinamica">
-    <h1 id="dyn-nome">Princesa</h1>
-    <div class="idade" id="dyn-idade">👑 1 ANINHO 👑</div>
-    <div class="info-badge" id="dyn-data">📅 Data Especial</div>
-    <div class="info-badge" id="dyn-hora">⏰ 18:00 horas</div>
-    <div class="info-badge" id="dyn-local" style="font-size: 11px;">📍 Salão Real de Festas</div>
-  </div>
-
-  <div class="btn-layer" id="btnLayerPrincipal">
-    <a id="btn-local" class="btn-click" href="javascript:void(0)" onclick="abrirLocalizacao(event)"></a>
-    <a id="btn-presente" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); abrirPaginaPresentes()"></a>
-    <a id="btn-presenca" class="btn-click" href="javascript:void(0)" onclick="confirmarPresencaWhatsapp(event)"></a>
-  </div>
-
-  <!-- Presentes -->
-  <img id="presentes-page" src="https://i.postimg.cc/zX3NpXj6/presentes.png" alt="Presentes">
-
-  <div class="btn-layer" id="btnLayerPresentes">
-    <a id="btn-pedagogicos" class="btn-click" href="https://www.amazon.com.br/s?k=brinquedos+pedagogicos+1+ano" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
-    <a id="btn-livros" class="btn-click" href="https://www.amazon.com.br/s?k=livros+infantis+bebe+1+ano" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
-    <a id="btn-roupas" class="btn-click" href="https://www.lojasrenner.com.br/c/infantil/bebe" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
-    <a id="btn-higiene" class="btn-click" href="https://www.granado.com.br/bebe" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
-    <a id="btn-educativos" class="btn-click" href="https://www.rihappy.com.br/brinquedos-para-bebes" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
-    <a id="btn-valepix" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); abrirModalPix()"></a>
-    <a id="btn-voltar" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); voltarAoConvite()"></a>
-  </div>
-
-  <div id="modal-pix" onclick="fecharModalPix(event)">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <h3 id="pix-title">🎁 Vale Presente</h3>
-      <p>Caso prefira nos agraciar com um mimo via Pix:</p>
-      <div class="pix-chave-container" id="texto-chave-pix">CHAVE-PIX-AQUI</div>
-      <div class="pix-info-extra" id="pix-detalhes">
-        <strong>Favorecido:</strong> Nome do Titular<br>
-        <strong>Instituição:</strong> Banco
+    <form id="formCriador" onsubmit="processarEGerarLink(event)">
+      <div class="form-card">
+        <div class="form-card-title">👑 Dados da Criança</div>
+        <div class="row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" id="c_nome" placeholder="Ex: Valentina" required>
+          </div>
+          <div class="form-group">
+            <label>Idade</label>
+            <input type="text" id="c_idade" placeholder="Ex: 1 aninho" required>
+          </div>
+        </div>
       </div>
-      <button class="btn-copiar" type="button" onclick="copiarChavePix()">Copiar Chave Pix ✨</button>
-      <button class="btn-fechar" type="button" onclick="fecharModalPix()">Fechar</button>
-    </div>
-  </div>
 
+      <div class="form-card">
+        <div class="form-card-title">📅 Data e Local</div>
+        <div class="row">
+          <div class="form-group">
+            <label>Data</label>
+            <input type="text" id="c_data" placeholder="Ex: 20/12/2026" required>
+          </div>
+          <div class="form-group">
+            <label>Horário</label>
+            <input type="text" id="c_hora" placeholder="Ex: 17:00 horas" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nome do Salão</label>
+          <input type="text" id="c_local" placeholder="Ex: Buffet Reino Encantado" required>
+        </div>
+        <div class="form-group">
+          <label>Endereço Completo (Gera o GPS sozinho)</label>
+          <input type="text" id="c_endereco" placeholder="Ex: Rua das Flores, 123 - Centro" required>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title">📱 WhatsApp de Confirmação</div>
+        <div class="form-group">
+          <label>Número com DDD (Apenas números)</label>
+          <input type="tel" id="c_whatsapp" placeholder="Ex: 21981461040" required>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title">🎁 Vale Presente (Pix)</div>
+        <div class="form-group">
+          <label>Chave Pix</label>
+          <input type="text" id="c_pix" placeholder="Chave Pix" required>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Nome do Favorecido</label>
+            <input type="text" id="c_pix_nome" placeholder="Ex: Mariana Silva" required>
+          </div>
+          <div class="form-group">
+            <label>Banco</label>
+            <input type="text" id="c_pix_banco" placeholder="Ex: Nubank" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title">📸 Fotos da Galeria</div>
+        <div class="btn-file-wrapper">
+          <div class="btn-file-label">📁 Escolher Fotos da Galeria (Até 5 fotos)</div>
+          <input type="file" id="fotosInput" accept="image/*" multiple onchange="prepararFotos(event)">
+        </div>
+        <div class="thumbs-box" id="thumbsBox"></div>
+        <div id="upload-status" style="font-size: 11px; color: #ffd700; text-align: center; margin-top: 6px;"></div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title">🎙️ Narração da História</div>
+        <div class="form-group">
+          <select id="c_narracao">
+            <option value="https://files.catbox.moe/txl3r7.mp3">Convocação Medieval Real (Arauto) 👑</option>
+            <option value="instrumental">Apenas Música Encantada de Fundo 🎵</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" id="btnSubmitCriador" class="btn-gerar-principal">✨ GERAR CONVITE MÁGICO ✨</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal do Link Gerado -->
+<div id="modal-gerado">
+  <div class="modal-gerado-content">
+    <h2>Convite Pronto! 👑</h2>
+    <p>O convite personalizado já está funcionando e pronto para ser compartilhado!</p>
+    <div class="box-link-final" id="linkFinalTexto"></div>
+    <button class="btn-modal-link btn-copiar-wpp" onclick="copiarLinkFinal()">Copiar Link para WhatsApp 📋</button>
+    <a id="btnTestarConvite" class="btn-modal-link btn-abrir-convite" target="_blank">Abrir e Ver Convite 👁️</a>
+    <button class="btn-fechar-criador" onclick="fecharModalGerado()">Fechar</button>
+  </div>
+</div>
+
+
+<!-- ========================================================
+     2. PALCO DO CONVITE (ABRE AUTOMATICAMENTE PELO LINK)
+     ======================================================== -->
+<div id="tela-convite">
+  <div class="stage" id="stage">
+    
+    <!-- 1. Capa -->
+    <img id="cover" src="./capa.png" alt="Capa" onclick="iniciarExperiencia()">
+    <div class="tap-hint" onclick="iniciarExperiencia()">✨ TOQUE PARA ABRIR ✨</div>
+
+    <!-- 3 Borboletas -->
+    <div id="butterflies-group">
+      <div id="b1" class="magic-butterfly" style="width: 50px; height: 50px;">
+        <div class="butterfly-body"><div class="wing left"></div><div class="butterfly-torso"></div><div class="wing right"></div></div>
+      </div>
+      <div id="b2" class="magic-butterfly" style="width: 42px; height: 42px;">
+        <div class="butterfly-body"><div class="wing left" style="animation-duration: 0.23s;"></div><div class="butterfly-torso"></div><div class="wing right" style="animation-duration: 0.23s;"></div></div>
+      </div>
+      <div id="b3" class="magic-butterfly" style="width: 36px; height: 36px;">
+        <div class="butterfly-body"><div class="wing left" style="animation-duration: 0.28s;"></div><div class="butterfly-torso"></div><div class="wing right" style="animation-duration: 0.28s;"></div></div>
+      </div>
+    </div>
+
+    <!-- Vídeo 1: Castelo se abrindo -->
+    <video id="video-abertura" class="video-player" playsinline webkit-playsinline x5-playsinline preload="auto" src="https://i.imgur.com/JPzoItH.mp4"></video>
+
+    <!-- Slideshow com as Fotos do Cliente -->
+    <div id="slideshow-container">
+      <div class="slideshow-bg"></div>
+      <div class="slideshow-title" id="slide-title">1 Aninho de Puro Amor ✨</div>
+      <div class="photo-frame" id="photoFrame">
+        <div class="photo-smoke-pulse" id="photoSmoke"></div>
+      </div>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+
+    <!-- Efeito Fumaça / Névoa Mágica -->
+    <div id="smoke-overlay"></div>
+
+    <button id="btn-pular" type="button" onclick="irParaFinal()">Pular vídeo ✕</button>
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Fundo do Convite -->
+    <img id="convite-page" src="./pagina.png?v=3" alt="Convite Principal">
+
+    <!-- Placa de Dados do Cliente -->
+    <div class="overlay-dinamica" id="overlayDinamica">
+      <h1 id="dyn-nome">Princesa</h1>
+      <div class="idade" id="dyn-idade">👑 1 ANINHO 👑</div>
+      <div class="info-badge" id="dyn-data">📅 Data Especial</div>
+      <div class="info-badge" id="dyn-hora">⏰ 17:00 horas</div>
+      <div class="info-badge" id="dyn-local" style="font-size: 11px;">📍 Salão de Festas</div>
+    </div>
+
+    <!-- Botões Principais -->
+    <div class="btn-layer" id="btnLayerPrincipal">
+      <a id="btn-local" class="btn-click" href="javascript:void(0)" onclick="abrirLocalizacao(event)"></a>
+      <a id="btn-presente" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); abrirPaginaPresentes()"></a>
+      <a id="btn-presenca" class="btn-click" href="javascript:void(0)" onclick="confirmarPresencaWhatsapp(event)"></a>
+    </div>
+
+    <!-- Presentes -->
+    <img id="presentes-page" src="https://i.postimg.cc/zX3NpXj6/presentes.png" alt="Presentes">
+
+    <div class="btn-layer" id="btnLayerPresentes">
+      <a id="btn-pedagogicos" class="btn-click" href="https://www.amazon.com.br/s?k=brinquedos+pedagogicos+1+ano" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
+      <a id="btn-livros" class="btn-click" href="https://www.amazon.com.br/s?k=livros+infantis+bebe+1+ano" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
+      <a id="btn-roupas" class="btn-click" href="https://www.lojasrenner.com.br/c/infantil/bebe" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
+      <a id="btn-higiene" class="btn-click" href="https://www.granado.com.br/bebe" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
+      <a id="btn-educativos" class="btn-click" href="https://www.rihappy.com.br/brinquedos-para-bebes" target="_blank" rel="noopener noreferrer" onclick="animarBrilho(event)"></a>
+      <a id="btn-valepix" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); abrirModalPix()"></a>
+      <a id="btn-voltar" class="btn-click" href="javascript:void(0)" onclick="animarBrilho(event); voltarAoConvite()"></a>
+    </div>
+
+    <!-- Modal Pix -->
+    <div id="modal-pix" onclick="fecharModalPix(event)">
+      <div class="modal-box" onclick="event.stopPropagation()">
+        <h3 id="pix-title">🎁 Vale Presente</h3>
+        <p>Caso prefira nos agraciar com um mimo via Pix:</p>
+        <div class="pix-chave-container" id="texto-chave-pix">CHAVE-PIX</div>
+        <div class="pix-info-extra" id="pix-detalhes"></div>
+        <button class="btn-copiar" type="button" onclick="copiarChavePix()">Copiar Chave Pix ✨</button>
+        <button class="btn-fechar" type="button" onclick="fecharModalPix()">Fechar</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <audio id="musica" src="https://i.imgur.com/Qv9rKqF.mp4" loop preload="auto"></audio>
@@ -399,389 +623,478 @@ html, body {
 
 <script>
 // ==========================================
-// 🌟 MOTOR UNIVERSAL: LÊ OS DADOS DO LINK 🌟
+// 🌟 ROTEADOR: DEFINE SE MOSTRA CRIADOR OU CONVITE
 // ==========================================
-const params = new URLSearchParams(window.location.search);
-const ehCustomizado = params.has('n'); // Verifica se veio do gerador
+const urlParams = new URLSearchParams(window.location.search);
+const ehModoConvite = urlParams.has('c'); // Se tem ?c=1, é o convite final!
 
-// Configurações
-let config = {
-  nome: params.get('n') || "Maitê",
-  idade: params.get('i') || "1 aninho",
-  data: params.get('d') || "14/11/2026",
-  hora: params.get('h') || "16:00 horas",
-  local: params.get('l') || "Espaço Aquarela Festas e Eventos",
-  maps: params.get('m') || "https://www.google.com/maps/search/?api=1&query=Espa%C3%A7o+Aquarela+Festas+e+Eventos",
-  whatsapp: params.get('w') || "5521981461040",
-  pix: params.get('p') || "14812948738",
-  pix_nome: params.get('pn') || "Tahayssa Avelino da Silva",
-  pix_banco: params.get('pb') || "PicPay",
-  audio: params.get('audio') || "https://files.catbox.moe/txl3r7.mp3",
-  fotos: params.get('fotos') ? params.get('fotos').split(',') : [
-    "https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg",
-    "https://i.postimg.cc/7Lg6nYVL/Whats-App-Image-2026-10-16-at-20-04-50.jpg",
-    "https://i.postimg.cc/bYCmhQXW/Whats-App-Image-2026-10-20-at-x.jpg"
-  ]
-};
-
-// 1. Aplica o Nome e Dados
-document.getElementById('page-title').innerText = "Convite Real - " + config.nome;
-document.getElementById('dyn-nome').innerText = config.nome;
-document.getElementById('dyn-idade').innerText = "👑 " + config.idade.toUpperCase() + " 👑";
-document.getElementById('dyn-data').innerText = "📅 " + config.data;
-document.getElementById('dyn-hora').innerText = "⏰ " + config.hora;
-document.getElementById('dyn-local').innerText = "📍 " + config.local;
-document.getElementById('slide-title').innerText = config.idade.toUpperCase() + " DE PURO AMOR ✨";
-
-// 2. Aplica o Pix
-document.getElementById('pix-title').innerText = "🎁 Vale Presente - " + config.nome;
-document.getElementById('texto-chave-pix').innerText = config.pix;
-document.getElementById('pix-detalhes').innerHTML = "<strong>Favorecido:</strong> " + config.pix_nome + "<br><strong>Instituição:</strong> " + config.pix_banco;
-
-// 3. Monta o Álbum de Fotos Dinâmico do Cliente
-const photoFrame = document.getElementById('photoFrame');
-const slideDotsContainer = document.getElementById('slideDots');
-config.fotos.forEach((link, idx) => {
-  const img = document.createElement('img');
-  img.src = link;
-  img.className = 'slide-photo';
-  if (idx === 0) img.classList.add('ativo');
-  photoFrame.appendChild(img);
-
-  const dot = document.createElement('span');
-  dot.className = 'dot';
-  if (idx === 0) dot.classList.add('ativo');
-  slideDotsContainer.appendChild(dot);
-});
-
-// Elementos
-const stage = document.getElementById('stage');
-const videoAbertura = document.getElementById('video-abertura');
-const videoFala = document.getElementById('video-fala');
-const btnPular = document.getElementById('btn-pular');
-const convitePage = document.getElementById('convite-page');
-const overlayDinamica = document.getElementById('overlayDinamica');
-const presentesPage = document.getElementById('presentes-page');
-const btnLayerPrincipal = document.getElementById('btnLayerPrincipal');
-const btnLayerPresentes = document.getElementById('btnLayerPresentes');
-const musica = document.getElementById('musica');
-const audioNarracao = document.getElementById('audio-narracao');
-const modalPix = document.getElementById('modal-pix');
-const smokeOverlay = document.getElementById('smoke-overlay');
-const b1 = document.getElementById('b1');
-const b2 = document.getElementById('b2');
-const b3 = document.getElementById('b3');
-const butterfliesGroup = document.getElementById('butterflies-group');
-const slideshowContainer = document.getElementById('slideshow-container');
-const photoSmoke = document.getElementById('photoSmoke');
-
-let slideAtual = 0;
-let slideInterval = null;
-let photoChangeTimeout = null;
-let smokeTimeout = null;
-let falaIniciada = false;
-
-// Configura o áudio
-if (config.audio && config.audio !== 'instrumental') {
-  audioNarracao.src = config.audio;
-  audioNarracao.load();
+if (!ehModoConvite) {
+  // MOSTRA O CRIADOR PARA O CLIENTE MONTAR
+  document.getElementById('tela-criador').style.display = 'flex';
+  document.getElementById('tela-convite').style.display = 'none';
+} else {
+  // MOSTRA O CONVITE GERADO
+  document.getElementById('tela-criador').style.display = 'none';
+  document.getElementById('tela-convite').style.display = 'flex';
 }
 
-// Canvas Partículas
-const canvas = document.getElementById('sparkle-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let butterflySparkles = [];
+// ==========================================
+// 🛠️ LÓGICA DO CRIADOR (UPLOAD E GERAÇÃO)
+// ==========================================
+let fotosComprimidas = [];
 
-function ajustarCanvas() {
-  canvas.width = stage.clientWidth;
-  canvas.height = stage.clientHeight;
-}
-window.addEventListener('resize', ajustarCanvas);
-ajustarCanvas();
+function prepararFotos(e) {
+  const files = e.target.files;
+  if (!files || files.length === 0) return;
 
-// Funções dos Botões
-function abrirLocalizacao(e) {
-  if (e) animarBrilho(e);
-  window.open(config.maps, '_blank');
-}
+  const box = document.getElementById('thumbsBox');
+  box.innerHTML = '';
+  fotosComprimidas = [];
 
-function confirmarPresencaWhatsapp(e) {
-  if (e) animarBrilho(e);
-  const castelo = String.fromCodePoint(0x1F3F0);
-  const coroa = String.fromCodePoint(0x1F451);
-  const festa = String.fromCodePoint(0x1F389);
-  const brilho = String.fromCodePoint(0x2728);
+  const total = Math.min(files.length, 5);
+  for (let i = 0; i < total; i++) {
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const maxW = 600;
+        const scale = maxW / img.width;
+        canvas.width = (img.width > maxW) ? maxW : img.width;
+        canvas.height = (img.width > maxW) ? (img.height * scale) : img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        const jpeg = canvas.toDataURL('image/jpeg', 0.75);
+        fotosComprimidas.push(jpeg);
 
-  const mensagem = "Saudações Reais! " + castelo + coroa + " Atendendo à nobre convocação de " + config.nome + ", confirmo com imensa honra e alegria a nossa presença no Grande Baile de " + config.idade + "! Nos vemos dia " + config.data + " às " + config.hora + " no " + config.local + "! " + festa + brilho;
-
-  const url = "https://api.whatsapp.com/send?phone=" + config.whatsapp + "&text=" + encodeURIComponent(mensagem);
-  window.open(url, '_blank');
-}
-
-// Rastro de Brilho
-function soltarBrilhoRastro(x, y) {
-  const cores = ['#ffd700', '#fff8dc', '#ffb6c1', '#ffffff', '#ffe29f'];
-  for (let i = 0; i < 3; i++) {
-    particles.push({
-      x: x + (Math.random() * 12 - 6),
-      y: y + (Math.random() * 12 - 6),
-      vx: (Math.random() - 0.5) * 2,
-      vy: (Math.random() - 0.5) * 2 + 0.5,
-      radius: Math.random() * 3 + 1,
-      alpha: 1, decay: 0.02,
-      color: cores[Math.floor(Math.random() * cores.length)]
-    });
-  }
-}
-stage.addEventListener('mousemove', (e) => {
-  const rect = stage.getBoundingClientRect();
-  soltarBrilhoRastro(e.clientX - rect.left, e.clientY - rect.top);
-});
-stage.addEventListener('touchmove', (e) => {
-  if (e.touches && e.touches[0]) {
-    const rect = stage.getBoundingClientRect();
-    soltarBrilhoRastro(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-  }
-}, { passive: true });
-
-// Borboletas 3D
-let borboletasAtivas = true;
-let tVoo = 0;
-function ativarBorboletas(sim) {
-  borboletasAtivas = sim;
-  butterfliesGroup.style.display = sim ? 'block' : 'none';
-}
-
-function atualizarBorboletas() {
-  if (!borboletasAtivas) return;
-  tVoo += 0.022;
-  const w = stage.clientWidth || 360;
-  const h = stage.clientHeight || 640;
-
-  const b1X = (w * 0.48) + Math.sin(tVoo * 0.85) * (w * 0.36) + Math.cos(tVoo * 1.6) * 20;
-  const b1Y = (h * 0.35) + Math.cos(tVoo * 0.7) * (h * 0.18) + Math.sin(tVoo * 1.4) * 28;
-  b1.style.transform = `translate(${b1X - 25}px, ${b1Y - 25}px) rotate(90deg)`;
-
-  const b2X = (w * 0.52) + Math.cos(tVoo * 0.95 + 1.2) * (w * 0.34);
-  const b2Y = (h * 0.45) + Math.sin(tVoo * 0.8 + 1.2) * (h * 0.22);
-  b2.style.transform = `translate(${b2X - 21}px, ${b2Y - 21}px) rotate(90deg)`;
-
-  const b3X = (w * 0.5) + Math.sin(tVoo * 1.1 + 2.5) * (w * 0.28);
-  const b3Y = (h * 0.28) + Math.cos(tVoo * 0.9 + 2.5) * (h * 0.15);
-  b3.style.transform = `translate(${b3X - 18}px, ${b3Y - 18}px) rotate(90deg)`;
-
-  if (Math.random() < 0.75) {
-    const alvos = [ {x: b1X, y: b1Y}, {x: b2X, y: b2Y}, {x: b3X, y: b3Y} ];
-    const p = alvos[Math.floor(Math.random() * alvos.length)];
-    butterflySparkles.push({
-      x: p.x, y: p.y,
-      vx: (Math.random() - 0.5) * 1.2, vy: Math.random() * 1.5 + 0.4,
-      radius: Math.random() * 2.8 + 1.2, alpha: 1, decay: 0.02,
-      color: '#ffd700'
-    });
+        const thumb = document.createElement('img');
+        thumb.src = jpeg;
+        thumb.className = 'thumb-img';
+        box.appendChild(thumb);
+      };
+      img.src = evt.target.result;
+    };
+    reader.readAsDataURL(files[i]);
   }
 }
 
-function loopAnimacao() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  atualizarBorboletas();
+async function processarEGerarLink(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btnSubmitCriador');
+  const status = document.getElementById('upload-status');
+  btn.disabled = true;
+  btn.innerText = "⏳ Criando a Mágica...";
 
-  for (let i = butterflySparkles.length - 1; i >= 0; i--) {
-    const p = butterflySparkles[i];
-    p.x += p.vx; p.y += p.vy; p.alpha -= p.decay;
-    if (p.alpha > 0) {
-      ctx.save(); ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-    } else butterflySparkles.splice(i, 1);
+  const nome = document.getElementById('c_nome').value.trim();
+  const idade = document.getElementById('c_idade').value.trim();
+  const data = document.getElementById('c_data').value.trim();
+  const hora = document.getElementById('c_hora').value.trim();
+  const local = document.getElementById('c_local').value.trim();
+  const endereco = document.getElementById('c_endereco').value.trim();
+  const whatsapp = document.getElementById('c_whatsapp').value.trim();
+  const pix = document.getElementById('c_pix').value.trim();
+  const pix_nome = document.getElementById('c_pix_nome').value.trim();
+  const pix_banco = document.getElementById('c_pix_banco').value.trim();
+  const narracao = document.getElementById('c_narracao').value;
+
+  // Gera o link do GPS sozinho
+  const mapsLink = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(local + ", " + endereco);
+
+  // Sobe as fotos da galeria para nuvem
+  let fotosLinks = [];
+  if (fotosComprimidas.length > 0) {
+    status.innerText = "Salvando fotos...";
+    for (let i = 0; i < fotosComprimidas.length; i++) {
+      try {
+        const formData = new FormData();
+        formData.append('image', fotosComprimidas[i].split(',')[1]);
+        const res = await fetch('https://api.imgbb.com/1/upload?key=6d207e02198a847aa5ad3ac5054907a9', {
+          method: 'POST', body: formData
+        });
+        const json = await res.json();
+        if (json && json.data && json.data.url) fotosLinks.push(json.data.url);
+      } catch (err) {
+        console.warn(err);
+      }
+    }
   }
 
-  for (let i = particles.length - 1; i >= 0; i--) {
-    const p = particles[i];
-    p.x += p.vx; p.y += p.vy; p.alpha -= p.decay;
-    if (p.alpha > 0) {
-      ctx.save(); ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-    } else particles.splice(i, 1);
+  // Se não enviou fotos, usa fotos neutras de princesa
+  if (fotosLinks.length === 0) {
+    fotosLinks = [
+      "https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg",
+      "https://i.postimg.cc/7Lg6nYVL/Whats-App-Image-2026-10-16-at-20-04-50.jpg"
+    ];
+  }
+
+  // Cria o link final com ?c=1
+  const p = new URLSearchParams();
+  p.set('c', '1');
+  p.set('n', nome);
+  p.set('i', idade);
+  p.set('d', data);
+  p.set('h', hora);
+  p.set('l', local);
+  p.set('m', mapsLink);
+  p.set('w', whatsapp);
+  p.set('p', pix);
+  p.set('pn', pix_nome);
+  p.set('pb', pix_banco);
+  p.set('a', narracao);
+  p.set('f', fotosLinks.join(','));
+
+  const urlPronta = window.location.origin + window.location.pathname + '?' + p.toString();
+
+  btn.disabled = false;
+  btn.innerText = "✨ GERAR CONVITE MÁGICO ✨";
+  status.innerText = "";
+
+  document.getElementById('linkFinalTexto').innerText = urlPronta;
+  document.getElementById('btnTestarConvite').href = urlPronta;
+  document.getElementById('modal-gerado').style.display = 'flex';
+}
+
+function copiarLinkFinal() {
+  const link = document.getElementById('linkFinalTexto').innerText;
+  navigator.clipboard.writeText(link).then(() => {
+    alert("✨ Link copiado com sucesso! Agora é só colar no WhatsApp!");
+  }).catch(() => { prompt("Copie o link abaixo:", link); });
+}
+function fecharModalGerado() { document.getElementById('modal-gerado').style.display = 'none'; }
+
+
+// ==========================================
+// 👑 LÓGICA DO CONVITE GERADO
+// ==========================================
+if (ehModoConvite) {
+  const dados = {
+    nome: urlParams.get('n') || "Princesa",
+    idade: urlParams.get('i') || "1 aninho",
+    data: urlParams.get('d') || "Data Especial",
+    hora: urlParams.get('h') || "17:00 horas",
+    local: urlParams.get('l') || "Salão Real",
+    maps: urlParams.get('m') || "https://maps.google.com",
+    whatsapp: urlParams.get('w') || "5521981461040",
+    pix: urlParams.get('p') || "CHAVE-PIX",
+    pix_nome: urlParams.get('pn') || "Favorecido",
+    pix_banco: urlParams.get('pb') || "Banco",
+    audio: urlParams.get('a') || "https://files.catbox.moe/txl3r7.mp3",
+    fotos: urlParams.get('f') ? urlParams.get('f').split(',') : [
+      "https://i.postimg.cc/nzpLRbSH/Whats-App-Image-2026-10-16-at-20-04-49.jpg"
+    ]
+  };
+
+  // Aplica os dados do cliente
+  document.getElementById('dyn-title').innerText = "Convite Real - " + dados.nome;
+  document.getElementById('dyn-nome').innerText = dados.nome;
+  document.getElementById('dyn-idade').innerText = "👑 " + dados.idade.toUpperCase() + " 👑";
+  document.getElementById('dyn-data').innerText = "📅 " + dados.data;
+  document.getElementById('dyn-hora').innerText = "⏰ " + dados.hora;
+  document.getElementById('dyn-local').innerText = "📍 " + dados.local;
+  document.getElementById('slide-title').innerText = dados.idade.toUpperCase() + " DE PURO AMOR ✨";
+
+  // Pix do cliente
+  document.getElementById('pix-title').innerText = "🎁 Vale Presente - " + dados.nome;
+  document.getElementById('texto-chave-pix').innerText = dados.pix;
+  document.getElementById('pix-detalhes').innerHTML = "<strong>Favorecido:</strong> " + dados.pix_nome + "<br><strong>Instituição:</strong> " + dados.pix_banco;
+
+  // Monta o álbum de fotos
+  const frame = document.getElementById('photoFrame');
+  const dots = document.getElementById('slideDots');
+  dados.fotos.forEach((link, idx) => {
+    const img = document.createElement('img');
+    img.src = link;
+    img.className = 'slide-photo';
+    if (idx === 0) img.classList.add('ativo');
+    frame.appendChild(img);
+
+    const d = document.createElement('span');
+    d.className = 'dot';
+    if (idx === 0) d.classList.add('ativo');
+    dots.appendChild(d);
+  });
+
+  // Elementos do convite
+  const stage = document.getElementById('stage');
+  const videoAbertura = document.getElementById('video-abertura');
+  const btnPular = document.getElementById('btn-pular');
+  const convitePage = document.getElementById('convite-page');
+  const overlayDinamica = document.getElementById('overlayDinamica');
+  const presentesPage = document.getElementById('presentes-page');
+  const btnLayerPrincipal = document.getElementById('btnLayerPrincipal');
+  const btnLayerPresentes = document.getElementById('btnLayerPresentes');
+  const musica = document.getElementById('musica');
+  const audioNarracao = document.getElementById('audio-narracao');
+  const modalPix = document.getElementById('modal-pix');
+  const smokeOverlay = document.getElementById('smoke-overlay');
+  const b1 = document.getElementById('b1');
+  const b2 = document.getElementById('b2');
+  const b3 = document.getElementById('b3');
+  const butterfliesGroup = document.getElementById('butterflies-group');
+  const slideshowContainer = document.getElementById('slideshow-container');
+  const photoSmoke = document.getElementById('photoSmoke');
+
+  let slideAtual = 0;
+  let slideInterval = null;
+  let photoChangeTimeout = null;
+  let smokeTimeout = null;
+  let finalizou = false;
+
+  if (dados.audio !== 'instrumental') {
+    audioNarracao.src = dados.audio;
+    audioNarracao.load();
+  }
+
+  // Canvas
+  const canvas = document.getElementById('sparkle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let butterflySparkles = [];
+
+  function ajustarCanvas() {
+    canvas.width = stage.clientWidth;
+    canvas.height = stage.clientHeight;
+  }
+  window.addEventListener('resize', ajustarCanvas);
+  ajustarCanvas();
+
+  window.abrirLocalizacao = function(e) {
+    if (e) animarBrilho(e);
+    window.open(dados.maps, '_blank');
+  };
+
+  window.confirmarPresencaWhatsapp = function(e) {
+    if (e) animarBrilho(e);
+    const castelo = String.fromCodePoint(0x1F3F0);
+    const coroa = String.fromCodePoint(0x1F451);
+    const festa = String.fromCodePoint(0x1F389);
+    const brilho = String.fromCodePoint(0x2728);
+    const msg = "Saudações Reais! " + castelo + coroa + " Atendendo à nobre convocação de " + dados.nome + ", confirmo com imensa honra e alegria a nossa presença no Grande Baile de " + dados.idade + "! Nos vemos dia " + dados.data + " às " + dados.hora + " no " + dados.local + "! " + festa + brilho;
+    window.open("https://api.whatsapp.com/send?phone=" + dados.whatsapp + "&text=" + encodeURIComponent(msg), '_blank');
+  };
+
+  window.soltarBrilhoRastro = function(x, y) {
+    const cores = ['#ffd700', '#fff8dc', '#ffb6c1', '#ffffff', '#ffe29f'];
+    for (let i = 0; i < 3; i++) {
+      particles.push({
+        x: x + (Math.random() * 12 - 6), y: y + (Math.random() * 12 - 6),
+        vx: (Math.random() - 0.5) * 2, vy: (Math.random() - 0.5) * 2 + 0.5,
+        radius: Math.random() * 3 + 1, alpha: 1, decay: 0.02,
+        color: cores[Math.floor(Math.random() * cores.length)]
+      });
+    }
+  };
+  stage.addEventListener('mousemove', (e) => {
+    const r = stage.getBoundingClientRect(); soltarBrilhoRastro(e.clientX - r.left, e.clientY - r.top);
+  });
+  stage.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      const r = stage.getBoundingClientRect(); soltarBrilhoRastro(e.touches[0].clientX - r.left, e.touches[0].clientY - r.top);
+    }
+  }, { passive: true });
+
+  // Borboletas 3D
+  let borboletasAtivas = true;
+  let tVoo = 0;
+  window.ativarBorboletas = function(sim) {
+    borboletasAtivas = sim;
+    butterfliesGroup.style.display = sim ? 'block' : 'none';
+  };
+
+  function atualizarBorboletas() {
+    if (!borboletasAtivas) return;
+    tVoo += 0.022;
+    const w = stage.clientWidth || 360;
+    const h = stage.clientHeight || 640;
+
+    const b1X = (w * 0.48) + Math.sin(tVoo * 0.85) * (w * 0.36) + Math.cos(tVoo * 1.6) * 20;
+    const b1Y = (h * 0.35) + Math.cos(tVoo * 0.7) * (h * 0.18) + Math.sin(tVoo * 1.4) * 28;
+    b1.style.transform = `translate(${b1X - 25}px, ${b1Y - 25}px) rotate(90deg)`;
+
+    const b2X = (w * 0.52) + Math.cos(tVoo * 0.95 + 1.2) * (w * 0.34);
+    const b2Y = (h * 0.45) + Math.sin(tVoo * 0.8 + 1.2) * (h * 0.22);
+    b2.style.transform = `translate(${b2X - 21}px, ${b2Y - 21}px) rotate(90deg)`;
+
+    const b3X = (w * 0.5) + Math.sin(tVoo * 1.1 + 2.5) * (w * 0.28);
+    const b3Y = (h * 0.28) + Math.cos(tVoo * 0.9 + 2.5) * (h * 0.15);
+    b3.style.transform = `translate(${b3X - 18}px, ${b3Y - 18}px) rotate(90deg)`;
+
+    if (Math.random() < 0.75) {
+      const alvos = [ {x: b1X, y: b1Y}, {x: b2X, y: b2Y}, {x: b3X, y: b3Y} ];
+      const p = alvos[Math.floor(Math.random() * alvos.length)];
+      butterflySparkles.push({
+        x: p.x, y: p.y, vx: (Math.random() - 0.5) * 1.2, vy: Math.random() * 1.5 + 0.4,
+        radius: Math.random() * 2.8 + 1.2, alpha: 1, decay: 0.02, color: '#ffd700'
+      });
+    }
+  }
+
+  function loopAnimacao() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    atualizarBorboletas();
+
+    for (let i = butterflySparkles.length - 1; i >= 0; i--) {
+      const p = butterflySparkles[i];
+      p.x += p.vx; p.y += p.vy; p.alpha -= p.decay;
+      if (p.alpha > 0) {
+        ctx.save(); ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      } else butterflySparkles.splice(i, 1);
+    }
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy; p.alpha -= p.decay;
+      if (p.alpha > 0) {
+        ctx.save(); ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      } else particles.splice(i, 1);
+    }
+    requestAnimationFrame(loopAnimacao);
   }
   requestAnimationFrame(loopAnimacao);
-}
-requestAnimationFrame(loopAnimacao);
 
-function animarBrilho(e) {
-  ajustarCanvas();
-  const rect = stage.getBoundingClientRect();
-  const x = (e.clientX || (rect.left + rect.width / 2)) - rect.left;
-  const y = (e.clientY || (rect.top + rect.height * 0.8)) - rect.top;
-  for (let i = 0; i < 30; i++) {
-    particles.push({
-      x: x, y: y,
-      vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6,
-      radius: Math.random() * 3.5 + 1.5, alpha: 1, decay: 0.02,
-      color: '#ffd700'
-    });
-  }
-}
-
-// Fluxo do Convite
-let jaIniciou = false;
-let transicaoIniciada = false;
-
-function iniciarExperiencia() {
-  if (jaIniciou) return;
-  jaIniciou = true;
-
-  if (audioNarracao) { audioNarracao.play().then(() => { audioNarracao.pause(); audioNarracao.currentTime = 0; }).catch(() => {}); }
-  if (musica) { musica.play().then(() => { musica.pause(); musica.currentTime = 0; }).catch(() => {}); }
-
-  ativarBorboletas(false);
-  stage.classList.add('opened');
-  videoAbertura.classList.add('visivel');
-  btnPular.style.display = 'block';
-
-  videoAbertura.currentTime = 0;
-  videoAbertura.play().catch(iniciarSlideshow);
-
-  videoAbertura.addEventListener('timeupdate', () => {
-    if (!transicaoIniciada && videoAbertura.duration && (videoAbertura.duration - videoAbertura.currentTime <= 0.65)) {
-      transicaoIniciada = true;
-      iniciarSlideshow();
+  window.animarBrilho = function(e) {
+    ajustarCanvas();
+    const r = stage.getBoundingClientRect();
+    const x = (e.clientX || (r.left + r.width / 2)) - r.left;
+    const y = (e.clientY || (r.top + r.height * 0.8)) - r.top;
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        x: x, y: y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6,
+        radius: Math.random() * 3.5 + 1.5, alpha: 1, decay: 0.02, color: '#ffd700'
+      });
     }
-  });
-  videoAbertura.onended = () => { if (!transicaoIniciada) iniciarSlideshow(); };
-  videoAbertura.onerror = iniciarSlideshow;
-}
+  };
 
-function iniciarSlideshow() {
-  transicaoIniciada = true;
-  videoAbertura.classList.remove('visivel');
-  setTimeout(() => { videoAbertura.pause(); }, 500);
+  let jaIniciou = false;
+  let transicaoIniciada = false;
 
-  if (musica) { musica.volume = 0.58; musica.play().catch(() => {}); }
-  if (audioNarracao && config.audio !== 'instrumental') {
-    audioNarracao.currentTime = 0;
-    audioNarracao.volume = 1;
-    audioNarracao.play().catch(() => {});
-  }
+  window.iniciarExperiencia = function() {
+    if (jaIniciou) return;
+    jaIniciou = true;
 
-  slideshowContainer.classList.add('visivel');
-  slideAtual = 0;
-  mostrarSlide(slideAtual);
-  ativarBorboletas(true);
+    if (audioNarracao) { audioNarracao.play().then(() => { audioNarracao.pause(); audioNarracao.currentTime = 0; }).catch(() => {}); }
+    if (musica) { musica.play().then(() => { musica.pause(); musica.currentTime = 0; }).catch(() => {}); }
 
-  const fotosDinamicas = document.querySelectorAll('.slide-photo');
-  let tempoPorFoto = Math.max(2400, (16 / fotosDinamicas.length) * 1000);
-
-  slideInterval = setInterval(() => {
-    photoSmoke.classList.add('ativo');
-    photoChangeTimeout = setTimeout(() => {
-      slideAtual++;
-      if (slideAtual < fotosDinamicas.length) {
-        mostrarSlide(slideAtual);
-        smokeTimeout = setTimeout(() => { photoSmoke.classList.remove('ativo'); }, 350);
-      } else {
-        finalizarSlideshowEIrParaFala();
-      }
-    }, 550);
-  }, tempoPorFoto);
-
-  if (audioNarracao) {
-    audioNarracao.onended = () => { finalizarSlideshowEIrParaFala(); };
-  }
-}
-
-function mostrarSlide(index) {
-  const photos = document.querySelectorAll('.slide-photo');
-  const dots = document.querySelectorAll('.dot');
-  photos.forEach((img, i) => { img.classList.toggle('ativo', i === index); });
-  dots.forEach((dot, i) => { dot.classList.toggle('ativo', i === index); });
-}
-
-// 🌟 TRANSIÇÃO INTELIGENTE: Pula o vídeo da Maitê se for convite customizado! 🌟
-function finalizarSlideshowEIrParaFala() {
-  if (falaIniciada) return;
-  falaIniciada = true;
-
-  if (slideInterval) clearInterval(slideInterval);
-  if (photoChangeTimeout) clearTimeout(photoChangeTimeout);
-  if (smokeTimeout) clearTimeout(smokeTimeout);
-
-  slideshowContainer.classList.remove('visivel');
-  ativarBorboletas(false);
-
-  // SE FOR OUTRA CRIANÇA: Pula o vídeo da Maitê e vai direto para o convite com fumaça!
-  if (ehCustomizado) {
-    irParaFinal();
-    return;
-  }
-
-  // Se for o convite original da Maitê, toca a fala dela normalmente
-  if (musica) musica.volume = 0.22;
-  videoFala.currentTime = 0;
-  videoFala.muted = false;
-  videoFala.classList.add('visivel');
-  videoFala.play().catch(irParaFinal);
-
-  videoFala.onended = irParaFinal;
-  videoFala.onerror = irParaFinal;
-}
-
-function irParaFinal() {
-  falaIniciada = true;
-  if (slideInterval) clearInterval(slideInterval);
-  if (photoChangeTimeout) clearTimeout(photoChangeTimeout);
-  if (smokeTimeout) clearTimeout(smokeTimeout);
-  if (audioNarracao) audioNarracao.pause();
-  
-  btnPular.style.display = 'none';
-  smokeOverlay.classList.add('animar');
-
-  setTimeout(() => {
-    if (videoAbertura) { videoAbertura.classList.remove('visivel'); videoAbertura.pause(); }
-    if (slideshowContainer) slideshowContainer.classList.remove('visivel');
-    if (videoFala) { videoFala.classList.remove('visivel'); videoFala.pause(); }
-
+    ativarBorboletas(false);
     stage.classList.add('opened');
-    if (musica) { musica.volume = 0.65; if (musica.paused) musica.play().catch(() => {}); }
+    videoAbertura.classList.add('visivel');
+    btnPular.style.display = 'block';
 
-    convitePage.classList.add('show');
-    btnLayerPrincipal.classList.add('show');
-    
-    // 🌟 SÓ EXIBE A PLACA SE FOR UM CONVITE PERSONALIZADO 🌟
-    if (ehCustomizado) {
-      overlayDinamica.style.display = 'flex';
+    videoAbertura.currentTime = 0;
+    videoAbertura.play().catch(iniciarSlideshow);
+
+    videoAbertura.addEventListener('timeupdate', () => {
+      if (!transicaoIniciada && videoAbertura.duration && (videoAbertura.duration - videoAbertura.currentTime <= 0.65)) {
+        transicaoIniciada = true;
+        iniciarSlideshow();
+      }
+    });
+    videoAbertura.onended = () => { if (!transicaoIniciada) iniciarSlideshow(); };
+    videoAbertura.onerror = iniciarSlideshow;
+  };
+
+  function iniciarSlideshow() {
+    transicaoIniciada = true;
+    videoAbertura.classList.remove('visivel');
+    setTimeout(() => { videoAbertura.pause(); }, 500);
+
+    if (musica) { musica.volume = 0.58; musica.play().catch(() => {}); }
+    if (audioNarracao && dados.audio !== 'instrumental') {
+      audioNarracao.currentTime = 0;
+      audioNarracao.volume = 1;
+      audioNarracao.play().catch(() => {});
     }
 
+    slideshowContainer.classList.add('visivel');
+    slideAtual = 0;
+    mostrarSlide(slideAtual);
     ativarBorboletas(true);
-    setTimeout(() => { smokeOverlay.classList.remove('animar'); }, 450);
-  }, 350);
-}
 
-function abrirPaginaPresentes() {
-  convitePage.classList.remove('show');
-  if (ehCustomizado) overlayDinamica.style.display = 'none';
-  btnLayerPrincipal.classList.remove('show');
-  presentesPage.classList.add('show');
-  btnLayerPresentes.classList.add('show');
-  ativarBorboletas(true);
-}
+    const fotosEl = document.querySelectorAll('.slide-photo');
+    let tempoPorFoto = Math.max(2400, (16 / fotosEl.length) * 1000);
 
-function voltarAoConvite() {
-  presentesPage.classList.remove('show');
-  btnLayerPresentes.classList.remove('show');
-  convitePage.classList.add('show');
-  if (ehCustomizado) overlayDinamica.style.display = 'flex';
-  btnLayerPrincipal.classList.add('show');
-  ativarBorboletas(true);
-}
+    slideInterval = setInterval(() => {
+      photoSmoke.classList.add('ativo');
+      photoChangeTimeout = setTimeout(() => {
+        slideAtual++;
+        if (slideAtual < fotosEl.length) {
+          mostrarSlide(slideAtual);
+          smokeTimeout = setTimeout(() => { photoSmoke.classList.remove('ativo'); }, 350);
+        } else {
+          // TERMINOU AS FOTOS: VAI DIRETO PARA O CONVITE COM FUMAÇA! (SEM VÍDEO DA MAITÊ)
+          irParaFinal();
+        }
+      }, 550);
+    }, tempoPorFoto);
 
-function abrirModalPix() { modalPix.style.display = 'flex'; }
-function fecharModalPix() { modalPix.style.display = 'none'; }
-function copiarChavePix() {
-  navigator.clipboard.writeText(config.pix).then(() => {
-    alert("✨ Chave Pix copiada com sucesso!\n\nFavorecida: " + config.pix_nome + "\nInstituição: " + config.pix_banco);
-    fecharModalPix();
-  }).catch(() => { prompt("Copie a chave Pix:", config.pix); });
+    if (audioNarracao) {
+      audioNarracao.onended = () => { irParaFinal(); };
+    }
+  }
+
+  function mostrarSlide(index) {
+    const photos = document.querySelectorAll('.slide-photo');
+    const dotList = document.querySelectorAll('.dot');
+    photos.forEach((img, i) => { img.classList.toggle('ativo', i === index); });
+    dotList.forEach((d, i) => { d.classList.toggle('ativo', i === index); });
+  }
+
+  window.irParaFinal = function() {
+    if (finalizou) return;
+    finalizou = true;
+
+    if (slideInterval) clearInterval(slideInterval);
+    if (photoChangeTimeout) clearTimeout(photoChangeTimeout);
+    if (smokeTimeout) clearTimeout(smokeTimeout);
+    if (audioNarracao) audioNarracao.pause();
+
+    btnPular.style.display = 'none';
+    smokeOverlay.classList.add('animar');
+
+    setTimeout(() => {
+      if (videoAbertura) { videoAbertura.classList.remove('visivel'); videoAbertura.pause(); }
+      if (slideshowContainer) slideshowContainer.classList.remove('visivel');
+
+      stage.classList.add('opened');
+      if (musica) { musica.volume = 0.65; if (musica.paused) musica.play().catch(() => {}); }
+
+      convitePage.classList.add('show');
+      btnLayerPrincipal.classList.add('show');
+      overlayDinamica.style.display = 'flex'; // Exibe os dados do cliente!
+      ativarBorboletas(true);
+
+      setTimeout(() => { smokeOverlay.classList.remove('animar'); }, 450);
+    }, 350);
+  };
+
+  window.abrirPaginaPresentes = function() {
+    convitePage.classList.remove('show');
+    overlayDinamica.style.display = 'none';
+    btnLayerPrincipal.classList.remove('show');
+    presentesPage.classList.add('show');
+    btnLayerPresentes.classList.add('show');
+    ativarBorboletas(true);
+  };
+
+  window.voltarAoConvite = function() {
+    presentesPage.classList.remove('show');
+    btnLayerPresentes.classList.remove('show');
+    convitePage.classList.add('show');
+    overlayDinamica.style.display = 'flex';
+    btnLayerPrincipal.classList.add('show');
+    ativarBorboletas(true);
+  };
+
+  window.abrirModalPix = function() { modalPix.style.display = 'flex'; };
+  window.fecharModalPix = function() { modalPix.style.display = 'none'; };
+  window.copiarChavePix = function() {
+    navigator.clipboard.writeText(dados.pix).then(() => {
+      alert("✨ Chave Pix copiada com sucesso!\n\nFavorecido: " + dados.pix_nome + "\nInstituição: " + dados.pix_banco);
+      fecharModalPix();
+    }).catch(() => { prompt("Copie a chave Pix:", dados.pix); });
+  };
 }
 </script>
 
